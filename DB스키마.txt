@@ -1,0 +1,39 @@
+CREATE TABLE `race_info` (
+  `race_seq` int(11) NOT NULL AUTO_INCREMENT,
+  `race_place` char(1) NOT NULL,
+  `race_ymd` char(10) NOT NULL,
+  `race_year` char(4) NOT NULL,
+  `race_date` varchar(8) NOT NULL,
+  `race_round` varchar(3) NOT NULL,
+  `entry_grade` varchar(50) NOT NULL,
+  `reg_dt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `edit_dt` datetime DEFAULT NULL,
+  PRIMARY KEY (`race_seq`),
+  UNIQUE KEY `PK_RACE_INFO` (`race_seq`)
+) ENGINE=InnoDB AUTO_INCREMENT=2866 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `race_result` (
+  `race_seq` int(11) NOT NULL,
+  `ranking` varchar(2) NOT NULL DEFAULT '0',
+  `h_num` varchar(2) DEFAULT NULL,
+  `h_name` varchar(20) NOT NULL,
+  `h_born` varchar(10) DEFAULT NULL,
+  `h_sex` char(1) DEFAULT NULL,
+  `h_age` varchar(2) DEFAULT NULL,
+  `h_weight` varchar(4) DEFAULT NULL,
+  `h_rating` varchar(2) DEFAULT '''',
+  `h_rider` varchar(10) DEFAULT NULL,
+  `h_trainer` varchar(10) DEFAULT NULL,
+  `h_owner` varchar(10) DEFAULT NULL,
+  `h_part` varchar(2) DEFAULT '''',
+  `h_cj` varchar(8) DEFAULT NULL,
+  `win_one` int(11) DEFAULT NULL,
+  `win_two` int(11) DEFAULT NULL,
+  `h_acc` varchar(20) DEFAULT NULL,
+  `imsi` int(11) DEFAULT NULL,
+  `reg_dt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `edit_dt` datetime DEFAULT NULL,
+  PRIMARY KEY (`race_seq`,`h_name`),
+  UNIQUE KEY `PK_RACE_RESULT` (`race_seq`,`h_name`),
+  CONSTRAINT `FK_RACE_INFO_TO_RACE_RESULT` FOREIGN KEY (`race_seq`) REFERENCES `race_info` (`race_seq`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

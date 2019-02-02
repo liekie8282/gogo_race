@@ -1,0 +1,65 @@
+APMSET 설치 후 브라우저에 'localhost' 입력 > 지정된 화면이 뜨면 정상임!
+
+SQLGATE 설치 후 mysql : root/apmsetup 입력하여 연결!
+
+[사이트 홈페이지]
+D:\workspace\gogorace
+
+[패스워드]
+mysql : root/apmsetup
+
+
+
+---------------------------------------------------------------------
+[mysql] 필드값 자동 증가
+---------------------------------------------------------------------
+
+create table test(
+   seq int auto_increment,
+   name varchar(30),
+   content varchar(200),
+   test int
+) 
+
+오라클 경우에는 currval과 같은 요소로 sequence의 현재값을 가져다 사용할 수 있다.
+하지만 mysql에는  last_insert_id()함수라는것이 있다!.
+last_insert_id() : auto_increment 의 현재값을 리턴해줌.
+
+insert into test(name, content) values('superman', last_insert_id()+1);
+
+
+이와같은 형식으로 사용이 가능하다.
+
+
+<오토컬럼 추가>
+ALTER TABLE RACE_INFO MODIFY race_seq INT NOT NULL AUTO_INCREMENT;
+
+
+SELECT CAST(a AS signed integer) FROM A;
+
+CONVERT(COL_1, UNSIGNED)
+
+CONCAT(숫자)  : 숫자를 문자로 바꿈
+ 
+CONCAT(숫자,문자) : 숫자를 문자로 변환한뒤 문자열 형태로 더한다.
+ 
+CONCAT(문자,문자) : 문자와 문자를 더한다.
+ 
+SELECT CONCAT(LAST_INSERT_ID() , '번째') FROM DUAL
+ 
+SELECT CONCAT('0' , '번째') FROM DUAL
+ 
+20060331 포멧의 날짜에서 하루 빼서 20060330 으로
+SELECT DATE_FORMAT(ADDDATE('20060331' , -1),'%Y%m%d') ;
+ 
+20060331 포멧의 날짜에서 하루 빼서 2006-03-30 으로
+SELECT DATE_FORMAT(ADDDATE('20060331' , -1),'%Y-%m-%d') ;
+ 
+2006-03-31 포멧의 날짜에서 하루 빼서 20060330 으로
+SELECT DATE_FORMAT(ADDDATE('2006-03-31' , -1),'%Y%m%d') ;
+
+
+
+Status: 1	Back Ordered	
+
+Estimated Arrival Date: N/A.
